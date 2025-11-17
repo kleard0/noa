@@ -1,0 +1,20 @@
+name: furgal_ai_hackathon
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy=1.23
+  - pandas
+  - matplotlib
+  - scikit-learn
+  - pip
+
+  - pip:
+    - requests
+    - huggingface-hub
+    - autoawq
+    - numpy
+    - torch
+    - pyyaml
+    - transformers
+    - accelerate

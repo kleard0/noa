@@ -1,0 +1,14 @@
+
+HF_token : <your_huggingface_token>
+model_path : "mistralai/Mistral-7B-v0.1"
+
+huggingface_repo_id: <your_huggingface_repo_id>
+model_name: <your_model_name>
+quantization_level: <your_quantization_level>  # Q4_K_M, Q5_K_M, Q8_0, etc.
+ollama_name_suffix: <your_ollama_name_suffix> # Suffixe ajouté au nom du modèle dans Ollama7-7
+
+LLAMA_CPP_DIR : "./llama.cpp" 
+HF_MODEL_DIR : "./original_model"
+
+
+
