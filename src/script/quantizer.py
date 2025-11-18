@@ -14,10 +14,11 @@ class Quantizer():
         self.config = load_config(config_path)
         self.model_path = self.config["model_path"]
         self.model_name = self.config["model_name"]
+        self.quant_option = self.config["quantization_level"]
         os.environ['HF_TOKEN'] = self.config["HF_token"]
         
         
-    def quantize_gguf(self, input_gguf, quant_option):
+    def quantize_gguf(self, input_gguf):
         input_gguf = str(input_gguf)
         output_gguf = str(input_gguf) + str(quant_option) + ".gguf"
 
@@ -27,7 +28,7 @@ class Quantizer():
             llama_quantize_bin,
             input_gguf,
             self.model_name ,
-            qtype
+            self.quant_option,
         ]
 
         print("⚙️  Quantization GGUF")
@@ -83,8 +84,7 @@ class Quantizer():
         print(f"✔️ Compilation réussie : {bin_path}")
         return str(bin_path)
 
-    def run(self, quant_option):
+    def run(self):
 
-        self.ensure_llama_quantize(quant_option)
-        
+        self.ensure_llama_quantize()
         self.quantize_gguf(outfile)

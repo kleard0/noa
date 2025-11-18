@@ -9,7 +9,7 @@ def main():
 
     quantizer = Quantizer(config_path)
     # pruning = Pruning(config_path) # 2 is the pruning Percentage
-    # quantizer.run()
+    quantizer.run()
     # pruning.run(2)
     #import_gguf_to_llama("gemma-3-270mprune.py")
 

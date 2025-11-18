@@ -12,6 +12,9 @@ dependencies:
   - pandas
   - matplotlib
   - scikit-learn
+  - cxx-compiler
+  - make
+  - cmake
   - pip
 
   - pip:
@@ -20,4 +23,4 @@ dependencies:
       - pyyaml
       - transformers
       - accelerate
-      - git+https://github.com/ggerganov/llama.cpp.git
+      - llama-cpp-python
