@@ -26,7 +26,7 @@ class Quantizer():
         cmd = [
             llama_quantize_bin,
             input_gguf,
-            self.,
+            self.model_name ,
             qtype
         ]
 

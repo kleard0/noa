@@ -6,8 +6,8 @@ channels:
 
 dependencies:
   - python=3.10
-  - pytorch        # le vrai package conda pour torch
-  - torchvision    # utile pour PyTorch (optionnel)
+  - pytorch        
+  - torchvision   
   - numpy=1.23
   - pandas
   - matplotlib
@@ -20,3 +20,4 @@ dependencies:
       - pyyaml
       - transformers
       - accelerate
+      - git+https://github.com/ggerganov/llama.cpp.git
