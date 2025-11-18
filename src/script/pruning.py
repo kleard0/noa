@@ -7,7 +7,7 @@ import yaml
 import torch
 import shutil
 from torch.nn.utils import prune
-from utils import load_config
+from utils.utils import load_config
 from pathlib import Path
 
 

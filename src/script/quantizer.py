@@ -4,7 +4,7 @@ import os
 import sys
 import subprocess
 import yaml
-from utils import load_config
+from utils.utils import load_config
 from pathlib import Path
 
 

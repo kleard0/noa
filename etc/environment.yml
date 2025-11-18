@@ -1,8 +1,13 @@
-name: furgal_ai_hackathon
+name: noa
 channels:
+  - pytorch
+  - conda-forge
   - defaults
+
 dependencies:
   - python=3.10
+  - pytorch        # le vrai package conda pour torch
+  - torchvision    # utile pour PyTorch (optionnel)
   - numpy=1.23
   - pandas
   - matplotlib
@@ -10,11 +15,8 @@ dependencies:
   - pip
 
   - pip:
-    - requests
-    - huggingface-hub
-    - autoawq
-    - numpy
-    - torch
-    - pyyaml
-    - transformers
-    - accelerate
+      - requests
+      - huggingface-hub
+      - pyyaml
+      - transformers
+      - accelerate

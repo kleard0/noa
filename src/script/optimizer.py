@@ -1,6 +1,6 @@
-from quantizer import Quantizer
-from pruning import Pruning
-from utils import load_config, check_model_folder, download_hf_model
+from script.quantizer import Quantizer
+from script.pruning import Pruning
+from utils.utils import load_config, check_model_folder, download_hf_model
 
 
 QUANTIZATION_OPTION [
