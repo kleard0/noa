@@ -8,8 +8,7 @@ def main():
     config_path = "etc/config.yml"
 
     quantizer = Quantizer(config_path)
-    print(type(quantizer.hf_token))
-    download_hf_model(quantizer)
+    #download_hf_model(quantizer)
     check_model_folder(quantizer)
     # pruning = Pruning(config_path) # 2 is the pruning Percentage
     quantizer.run()
