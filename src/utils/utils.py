@@ -1,5 +1,8 @@
 import yaml
 import os
+from huggingface_hub import snapshot_download, login
+from pathlib import Path
+
 
 
 def load_config(config_path):
@@ -23,7 +26,7 @@ def download_hf_model(self):
     Methods to download a model (llm) from hf, login() method use HF_TOKEN
     """
     try : 
-        login(token=os.environ[self.hf_token])
+        login(self.hf_token)
         snapshot_download(repo_id=self.model_path, local_dir=self.model_name)
     except Exception as e:
         print(f"Erreur lors du téléchargement : {e}")
