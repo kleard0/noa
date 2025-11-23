@@ -12,10 +12,12 @@ class Quantizer():
         self.config = load_config(config_path)
         self.model_path = self.config["model_path"]
         self.model_name = self.config["model_name"]
+
         self.hf_token = self.config["HF_token"]
-        
+        self.model_dir = self.config["model_dir"]
         self.quant_option = self.config["quantization_level"] # ex: "Q4_K_M"
-        os.environ['HF_TOKEN'] = self.hf_token
+        os.environ['HF_TOKEN'] = self.hf_token        
+        self.model_local_path = str(self.model_dir) + "/" + str(self.model_name)        
         
         self.quant_map = {
             "Q4_0": llama_cpp.LLAMA_FTYPE_MOSTLY_Q4_0,

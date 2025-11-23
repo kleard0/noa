@@ -2,7 +2,32 @@ import yaml
 import os
 from huggingface_hub import snapshot_download, login
 from pathlib import Path
+import subprocess
+import sys
 
+
+
+def convert_hf_to_gguf(self):
+
+    outfile = str(self.model_local_path) + "_gguf"
+
+    cmd = [
+        sys.executable,
+        "llama.cpp/convert_hf_to_gguf.py",
+        self.model_local_path,
+        "--outfile", outfile,
+        "--outtype", "f32"
+    ]
+    print("🚀 Conversion HF → GGUF")
+    print(">>>", " ".join(cmd))
+
+    try:
+        subprocess.check_call(cmd)
+        print(f"✔️ GGUF généré : {outfile}")
+    except subprocess.CalledProcessError as e:
+        print("❌ Erreur lors de la conversion :", e)
+        raise
+    return outfile
 
 
 def load_config(config_path):
@@ -25,16 +50,17 @@ def download_hf_model(self):
     """
     Methods to download a model (llm) from hf, login() method use HF_TOKEN
     """
-    try : 
+    try :
+       
         login(self.hf_token)
-        snapshot_download(repo_id=self.model_path, local_dir=self.model_name)
+        snapshot_download(repo_id=self.model_path, local_dir=self.model_local_path)
     except Exception as e:
         print(f"Erreur lors du téléchargement : {e}")
         raise
 
 
 def check_model_folder(self):
-    hf_dir = Path(self.model_name)
+    hf_dir = Path(self.model_local_path)
     if not hf_dir.exists():
         raise SystemExit(f"Répertoire {hf_dir} introuvable. Vérifie snapshot_download.")
     print(f"Contenu de {hf_dir}:")

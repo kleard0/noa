@@ -1,15 +1,17 @@
 from script.quantizer import Quantizer
 from script.pruning import Pruning
 from script.llama_import import import_gguf_to_llama
-from utils .utils import download_hf_model, check_model_folder
+from utils.utils import download_hf_model, check_model_folder, convert_hf_to_gguf
 
 def main():
     
     config_path = "etc/config.yml"
 
     quantizer = Quantizer(config_path)
-    #download_hf_model(quantizer)
+    download_hf_model(quantizer)
     check_model_folder(quantizer)
+    convert_hf_to_gguf(quantizer)
+    
     # pruning = Pruning(config_path) # 2 is the pruning Percentage
     quantizer.run()
     # pruning.run(2)

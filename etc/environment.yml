@@ -24,3 +24,6 @@ dependencies:
       - transformers
       - accelerate
       - llama-cpp-python
+      - git+https://github.com/ggml-org/llama.cpp.git
+
+      
