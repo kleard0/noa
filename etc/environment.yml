@@ -23,6 +23,7 @@ dependencies:
       - pyyaml
       - transformers
       - accelerate
+      - streamlit
       - llama-cpp-python
       - git+https://github.com/ggml-org/llama.cpp.git
 

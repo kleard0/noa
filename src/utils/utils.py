@@ -9,12 +9,11 @@ import sys
 
 def convert_hf_to_gguf(self):
 
-    outfile = str(self.model_local_path) + "_gguf"
-
+    outfile = str(self.model_path) + "_gguf"
     cmd = [
         sys.executable,
         "llama.cpp/convert_hf_to_gguf.py",
-        self.model_local_path,
+        self.model_path,
         "--outfile", outfile,
         "--outtype", "f32"
     ]
@@ -28,7 +27,6 @@ def convert_hf_to_gguf(self):
         print("❌ Erreur lors de la conversion :", e)
         raise
     return outfile
-
 
 def load_config(config_path):
     print(config_path)
@@ -53,14 +51,14 @@ def download_hf_model(self):
     try :
        
         login(self.hf_token)
-        snapshot_download(repo_id=self.model_path, local_dir=self.model_local_path)
+        snapshot_download(repo_id=self.model_path, local_dir=self.model_dir)
     except Exception as e:
         print(f"Erreur lors du téléchargement : {e}")
         raise
 
 
 def check_model_folder(self):
-    hf_dir = Path(self.model_local_path)
+    hf_dir = Path(self.model_dir)
     if not hf_dir.exists():
         raise SystemExit(f"Répertoire {hf_dir} introuvable. Vérifie snapshot_download.")
     print(f"Contenu de {hf_dir}:")
